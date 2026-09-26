@@ -9,6 +9,7 @@ interface NavbarProps {
   dayNumber: number;
   easyMode: boolean;
   language: Language;
+  isRandomMode?: boolean;
   onToggleEasyMode: () => void;
   onOpenHelp: () => void;
   onOpenStats: () => void;
@@ -110,6 +111,7 @@ export default function Navbar({
   dayNumber,
   easyMode,
   language,
+  isRandomMode = false,
   onToggleEasyMode,
   onOpenHelp,
   onOpenStats,
@@ -124,7 +126,9 @@ export default function Navbar({
             <h1 className="navbar-title">
               <span className="brand-chem">CHEM</span><span className="brand-dle">DLE</span>
             </h1>
-            <span className="navbar-subtitle">{t('dayPrefix', language)}{dayNumber}</span>
+            <span className={`navbar-subtitle ${isRandomMode ? 'random-badge' : ''}`}>
+              {isRandomMode ? `🎲 ${t('randomModeBadge', language)}` : `${t('dayPrefix', language)}${dayNumber}`}
+            </span>
           </div>
         </div>
 

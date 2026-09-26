@@ -4,7 +4,7 @@ import React, { useEffect, useState, useCallback } from 'react';
 import Modal from './Modal';
 import { ChemicalElement, GuessEvaluation, Language } from '@/data/types';
 import { getDayNumber, getTimeUntilNextDay } from '@/lib/dailyTarget';
-import { Share2, Check, Link2, MessageCircle } from 'lucide-react';
+import { Share2, Check, Link2, MessageCircle, Dices, Calendar } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import {
   t,
@@ -20,6 +20,9 @@ interface VictoryModalProps {
   evaluations: GuessEvaluation[];
   isWon: boolean;
   language: Language;
+  isRandomMode?: boolean;
+  onStartRandomGame?: () => void;
+  onReturnToDaily?: () => void;
 }
 
 function formatCountdown(ms: number): string {
@@ -51,6 +54,9 @@ export default function VictoryModal({
   evaluations,
   isWon,
   language,
+  isRandomMode = false,
+  onStartRandomGame,
+  onReturnToDaily,
 }: VictoryModalProps) {
   const [countdown, setCountdown] = useState('');
   const [copied, setCopied] = useState(false);
@@ -229,6 +235,41 @@ export default function VictoryModal({
           )}
         </div>
 
+        {/* Play with Random Element Action */}
+        <div className="random-game-modal-section">
+          {onStartRandomGame && (
+            <button
+              type="button"
+              className="random-game-modal-btn"
+              onClick={() => {
+                onClose();
+                onStartRandomGame();
+              }}
+            >
+              <Dices size={18} />
+              <span>
+                {isRandomMode
+                  ? t('playAnotherRandom', language)
+                  : t('playRandomElement', language)}
+              </span>
+            </button>
+          )}
+
+          {isRandomMode && onReturnToDaily && (
+            <button
+              type="button"
+              className="return-daily-modal-btn"
+              onClick={() => {
+                onClose();
+                onReturnToDaily();
+              }}
+            >
+              <Calendar size={16} />
+              <span>{t('backToDaily', language)}</span>
+            </button>
+          )}
+        </div>
+
         {/* App Teilen Box */}
         <div className="app-share-box">
           <span className="app-share-label">
@@ -273,11 +314,13 @@ export default function VictoryModal({
           </div>
         </div>
 
-        {/* Countdown */}
-        <div className="next-element-countdown">
-          <span className="countdown-label">{t('victoryNextIn', language)}</span>
-          <span className="countdown-timer">{countdown}</span>
-        </div>
+        {/* Countdown (only for daily game) */}
+        {!isRandomMode && (
+          <div className="next-element-countdown">
+            <span className="countdown-label">{t('victoryNextIn', language)}</span>
+            <span className="countdown-timer">{countdown}</span>
+          </div>
+        )}
       </div>
     </Modal>
   );

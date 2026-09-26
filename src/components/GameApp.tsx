@@ -4,6 +4,8 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { useGameState } from '@/hooks/useGameState';
 import { getDayNumber } from '@/lib/dailyTarget';
 import { Language } from '@/data/types';
+import { t } from '@/lib/translations';
+import { Dices, Calendar } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import ElementSearchBar from '@/components/ElementSearchBar';
 import GuessGrid from '@/components/GuessGrid';
@@ -18,6 +20,9 @@ export default function GameApp() {
     isLoaded,
     evaluations,
     target,
+    isRandomMode,
+    startRandomGame,
+    returnToDailyGame,
     submitGuess,
     updateSettings,
     guessedAtomicNumbers,
@@ -35,6 +40,17 @@ export default function GameApp() {
   const [hasShownVictory, setHasShownVictory] = useState(false);
 
   const currentLanguage: Language = settings.language || 'en';
+
+  const handleStartRandomGame = useCallback(() => {
+    setHasShownVictory(false);
+    setVictoryOpen(false);
+    startRandomGame();
+  }, [startRandomGame]);
+
+  const handleReturnToDaily = useCallback(() => {
+    setVictoryOpen(false);
+    returnToDailyGame();
+  }, [returnToDailyGame]);
 
   // Auto-open victory modal when game completes
   useEffect(() => {
@@ -94,6 +110,7 @@ export default function GameApp() {
         dayNumber={getDayNumber()}
         easyMode={Boolean(settings.easyMode)}
         language={currentLanguage}
+        isRandomMode={isRandomMode}
         onToggleEasyMode={handleToggleEasyMode}
         onOpenHelp={() => setHelpOpen(true)}
         onOpenStats={() => setStatsOpen(true)}
@@ -101,6 +118,24 @@ export default function GameApp() {
       />
 
       <main className="game-main">
+        {isRandomMode && (
+          <div className="random-mode-banner">
+            <div className="random-mode-badge-pill">
+              <Dices size={15} />
+              <span>{t('randomModeActiveNotice', currentLanguage)}</span>
+            </div>
+            <button
+              type="button"
+              className="return-daily-link-btn"
+              onClick={handleReturnToDaily}
+              title={t('backToDaily', currentLanguage)}
+            >
+              <Calendar size={14} />
+              <span>{t('backToDaily', currentLanguage)}</span>
+            </button>
+          </div>
+        )}
+
         <ElementSearchBar
           onSelect={submitGuess}
           guessedAtomicNumbers={guessedAtomicNumbers}
@@ -127,12 +162,36 @@ export default function GameApp() {
         />
 
         {isComplete && (
-          <button
-            className="view-result-btn"
-            onClick={() => setVictoryOpen(true)}
-          >
-            {currentLanguage === 'de' ? 'Ergebnis anzeigen' : 'View Result'}
-          </button>
+          <div className="completed-actions-row">
+            <button
+              className="view-result-btn"
+              onClick={() => setVictoryOpen(true)}
+            >
+              🏆 {currentLanguage === 'de' ? 'Ergebnis anzeigen' : 'View Result'}
+            </button>
+
+            <button
+              className="play-random-action-btn"
+              onClick={handleStartRandomGame}
+            >
+              <Dices size={16} />
+              <span>
+                {isRandomMode
+                  ? t('playAnotherRandom', currentLanguage)
+                  : t('playRandomElement', currentLanguage)}
+              </span>
+            </button>
+
+            {isRandomMode && (
+              <button
+                className="return-daily-action-btn"
+                onClick={handleReturnToDaily}
+              >
+                <Calendar size={15} />
+                <span>{t('backToDaily', currentLanguage)}</span>
+              </button>
+            )}
+          </div>
         )}
       </main>
 
@@ -168,6 +227,9 @@ export default function GameApp() {
           evaluations={evaluations}
           isWon={isWon}
           language={currentLanguage}
+          isRandomMode={isRandomMode}
+          onStartRandomGame={handleStartRandomGame}
+          onReturnToDaily={handleReturnToDaily}
         />
       )}
     </div>

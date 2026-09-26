@@ -364,6 +364,11 @@ export const UI_TEXTS = {
     shareWhatsApp: 'WhatsApp',
     shareNative: 'Share',
     shareMessageText: 'Check out Chemdle — the daily periodic table guessing game! 🧪',
+    playRandomElement: 'Play Random Element',
+    playAnotherRandom: 'Play Another Random',
+    randomModeBadge: 'Random Game',
+    backToDaily: 'Back to Daily Game',
+    randomModeActiveNotice: 'Random Practice Mode — Infinite Rounds',
 
     // Help
     helpTitle: 'How To Play',
@@ -470,6 +475,11 @@ export const UI_TEXTS = {
     shareWhatsApp: 'WhatsApp',
     shareNative: 'Teilen',
     shareMessageText: 'Kennst du schon Chemdle? Das tägliche Chemie-Quiz über das Periodensystem! 🧪',
+    playRandomElement: 'Zufalls-Runde spielen',
+    playAnotherRandom: 'Weiteres Zufallselement',
+    randomModeBadge: 'Zufalls-Runde',
+    backToDaily: 'Zurück zum Tages-Rätsel',
+    randomModeActiveNotice: 'Übungsmodus — Unbegrenzt mit Zufallselementen spielen',
 
     // Help
     helpTitle: 'Spielanleitung',
