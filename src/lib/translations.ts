@@ -356,8 +356,14 @@ export const UI_TEXTS = {
     victoryIdentifiedInSingle: 'You identified {name} in 1 guess!',
     victoryNotFound: 'The secret element was {name}. Better luck next time!',
     victoryNextIn: 'Next element in',
-    victoryShare: 'Share Result',
+    victoryShare: 'Share App',
     victoryCopied: 'Copied to clipboard!',
+    shareAppTitle: 'Share Chemdle',
+    copyLink: 'Copy Link',
+    linkCopied: 'Link Copied!',
+    shareWhatsApp: 'WhatsApp',
+    shareNative: 'Share',
+    shareMessageText: 'Check out Chemdle — the daily periodic table guessing game! 🧪',
 
     // Help
     helpTitle: 'How To Play',
@@ -456,8 +462,14 @@ export const UI_TEXTS = {
     victoryIdentifiedInSingle: 'Du hast {name} im 1. Versuch erraten!',
     victoryNotFound: 'Das gesuchte Element war {name}. Viel Erfolg beim nächsten Mal!',
     victoryNextIn: 'Nächstes Element in',
-    victoryShare: 'Ergebnis teilen',
+    victoryShare: 'App teilen',
     victoryCopied: 'In die Zwischenablage kopiert!',
+    shareAppTitle: 'Chemdle teilen',
+    copyLink: 'Link kopieren',
+    linkCopied: 'Link kopiert!',
+    shareWhatsApp: 'WhatsApp',
+    shareNative: 'Teilen',
+    shareMessageText: 'Kennst du schon Chemdle? Das tägliche Chemie-Quiz über das Periodensystem! 🧪',
 
     // Help
     helpTitle: 'Spielanleitung',

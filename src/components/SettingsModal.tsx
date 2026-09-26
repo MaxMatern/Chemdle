@@ -92,13 +92,24 @@ export default function SettingsModal({
               <p>{t('settingTempDesc', language)}</p>
             </div>
           </div>
-          <button
-            className="temp-toggle-btn"
-            onClick={onToggleTemperature}
-            aria-label={`Switch to ${temperatureUnit === 'K' ? 'Celsius' : 'Kelvin'}`}
-          >
-            {temperatureUnit === 'K' ? 'K' : '°C'}
-          </button>
+          <div className="unit-toggle-group" role="group" aria-label="Temperature unit selection">
+            <button
+              type="button"
+              className={`unit-btn ${temperatureUnit === 'K' ? 'active' : ''}`}
+              onClick={() => { if (temperatureUnit !== 'K') onToggleTemperature(); }}
+              aria-pressed={temperatureUnit === 'K'}
+            >
+              Kelvin (K)
+            </button>
+            <button
+              type="button"
+              className={`unit-btn ${temperatureUnit === 'C' ? 'active' : ''}`}
+              onClick={() => { if (temperatureUnit !== 'C') onToggleTemperature(); }}
+              aria-pressed={temperatureUnit === 'C'}
+            >
+              Celsius (°C)
+            </button>
+          </div>
         </div>
 
         {/* Easy Mode (Periodic Table) */}

@@ -4,8 +4,7 @@ import React, { useEffect, useState, useCallback } from 'react';
 import Modal from './Modal';
 import { ChemicalElement, GuessEvaluation, Language } from '@/data/types';
 import { getDayNumber, getTimeUntilNextDay } from '@/lib/dailyTarget';
-import { generateShareText } from '@/lib/comparator';
-import { Share2, Check } from 'lucide-react';
+import { Share2, Check, Link2, MessageCircle } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import {
   t,
@@ -92,24 +91,57 @@ export default function VictoryModal({
     return () => clearInterval(interval);
   }, [isOpen]);
 
-  const handleShare = useCallback(async () => {
-    const text = generateShareText(evaluations, getDayNumber());
+  const [canNativeShare, setCanNativeShare] = useState(false);
+
+  // Check Web Share API
+  useEffect(() => {
+    if (typeof navigator !== 'undefined' && typeof navigator.share === 'function') {
+      setCanNativeShare(true);
+    }
+  }, []);
+
+  const getAppUrl = useCallback(() => {
+    if (typeof window !== 'undefined') {
+      return window.location.origin;
+    }
+    return 'https://chemdle.vercel.app';
+  }, []);
+
+  const handleCopyLink = useCallback(async () => {
+    const url = getAppUrl();
     try {
-      await navigator.clipboard.writeText(text);
+      await navigator.clipboard.writeText(url);
       setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
+      setTimeout(() => setCopied(false), 2200);
     } catch {
-      // Fallback
       const textarea = document.createElement('textarea');
-      textarea.value = text;
+      textarea.value = url;
       document.body.appendChild(textarea);
       textarea.select();
       document.execCommand('copy');
       document.body.removeChild(textarea);
       setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
+      setTimeout(() => setCopied(false), 2200);
     }
-  }, [evaluations]);
+  }, [getAppUrl]);
+
+  const handleNativeShare = useCallback(async () => {
+    const url = getAppUrl();
+    const text = t('shareMessageText', language);
+    if (typeof navigator !== 'undefined' && navigator.share) {
+      try {
+        await navigator.share({
+          title: 'Chemdle',
+          text,
+          url,
+        });
+      } catch {
+        // User cancel
+      }
+    } else {
+      handleCopyLink();
+    }
+  }, [getAppUrl, language, handleCopyLink]);
 
   if (!target) return null;
 
@@ -197,18 +229,49 @@ export default function VictoryModal({
           )}
         </div>
 
-        {/* Share button */}
-        <button className="share-btn" onClick={handleShare}>
-          {copied ? (
-            <>
-              <Check size={18} /> {t('victoryCopied', language)}
-            </>
-          ) : (
-            <>
-              <Share2 size={18} /> {t('victoryShare', language)}
-            </>
-          )}
-        </button>
+        {/* App Teilen Box */}
+        <div className="app-share-box">
+          <span className="app-share-label">
+            <Share2 size={15} />
+            {t('shareAppTitle', language)}
+          </span>
+          <div className="app-share-actions">
+            <button
+              type="button"
+              className={`app-share-btn copy-link-btn ${copied ? 'copied' : ''}`}
+              onClick={handleCopyLink}
+              title={t('copyLink', language)}
+            >
+              {copied ? <Check size={16} /> : <Link2 size={16} />}
+              <span>{copied ? t('linkCopied', language) : t('copyLink', language)}</span>
+            </button>
+
+            <a
+              href={`https://api.whatsapp.com/send?text=${encodeURIComponent(
+                `${t('shareMessageText', language)} ${getAppUrl()}`
+              )}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="app-share-btn whatsapp-btn"
+              title="Per WhatsApp teilen"
+            >
+              <MessageCircle size={16} />
+              <span>{t('shareWhatsApp', language)}</span>
+            </a>
+
+            {canNativeShare && (
+              <button
+                type="button"
+                className="app-share-btn native-share-btn"
+                onClick={handleNativeShare}
+                title={t('shareNative', language)}
+              >
+                <Share2 size={16} />
+                <span>{t('shareNative', language)}</span>
+              </button>
+            )}
+          </div>
+        </div>
 
         {/* Countdown */}
         <div className="next-element-countdown">

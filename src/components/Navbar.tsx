@@ -19,8 +19,8 @@ function ChemdleLogo() {
   return (
     <div className="navbar-logo-badge" title="Chemdle">
       <svg
-        width="40"
-        height="40"
+        width="42"
+        height="42"
         viewBox="0 0 48 48"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -29,23 +29,18 @@ function ChemdleLogo() {
       >
         <defs>
           {/* Intense vibrant chemistry gradients */}
-          <linearGradient id="chemFlaskGlass" x1="8" y1="4" x2="40" y2="44" gradientUnits="userSpaceOnUse">
+          <linearGradient id="flaskGlassOutline" x1="10" y1="5" x2="38" y2="43" gradientUnits="userSpaceOnUse">
             <stop offset="0%" stopColor="#ffffff" />
             <stop offset="25%" stopColor="#00f5d4" />
             <stop offset="100%" stopColor="#00b4d8" />
           </linearGradient>
-          <linearGradient id="chemPotion" x1="12" y1="20" x2="36" y2="42" gradientUnits="userSpaceOnUse">
+          <linearGradient id="flaskLiquidGrad" x1="12" y1="18" x2="36" y2="42" gradientUnits="userSpaceOnUse">
             <stop offset="0%" stopColor="#00f5d4" />
-            <stop offset="50%" stopColor="#10b981" />
+            <stop offset="45%" stopColor="#10b981" />
             <stop offset="100%" stopColor="#059669" />
           </linearGradient>
-          <radialGradient id="atomCoreGlow" cx="24" cy="22" r="9" gradientUnits="userSpaceOnUse">
-            <stop offset="0%" stopColor="#ffffff" />
-            <stop offset="40%" stopColor="#00f5d4" />
-            <stop offset="100%" stopColor="#00f5d4" stopOpacity="0" />
-          </radialGradient>
-          <filter id="intenseNeonGlow" x="-30%" y="-30%" width="160%" height="160%">
-            <feGaussianBlur stdDeviation="2" result="blur" />
+          <filter id="flaskGlowFilter" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="1.5" result="blur" />
             <feMerge>
               <feMergeNode in="blur" />
               <feMergeNode in="SourceGraphic" />
@@ -53,70 +48,59 @@ function ChemdleLogo() {
           </filter>
         </defs>
 
-        {/* Flask Glass Body with vivid, high-contrast outline */}
+        {/* Flask Glass Body — Strong, iconic Erlenmeyer silhouette */}
         <path
-          d="M20 6V15L11.5 34.5C10.2 37.5 12.4 41 15.6 41H32.4C35.6 41 37.8 37.5 36.5 34.5L28 15V6H20Z"
-          fill="rgba(0, 245, 212, 0.22)"
-          stroke="url(#chemFlaskGlass)"
-          strokeWidth="3.2"
+          d="M20 6V15L10.8 35.2C9.5 38 11.6 41.5 14.8 41.5H33.2C36.4 41.5 38.5 38 37.2 35.2L28 15V6H20Z"
+          fill="rgba(0, 245, 212, 0.16)"
+          stroke="url(#flaskGlassOutline)"
+          strokeWidth="3"
           strokeLinejoin="round"
           strokeLinecap="round"
         />
 
-        {/* Flask Rim / Flange with bright solid highlight */}
-        <rect x="17.5" y="4" width="13" height="3.5" rx="1.75" fill="#ffffff" />
+        {/* Flask Lip / Rim with solid crisp white and cyan highlight */}
+        <rect x="17" y="4" width="14" height="3.5" rx="1.75" fill="#ffffff" />
         <rect x="19" y="5" width="10" height="1.5" rx="0.75" fill="#00f5d4" />
 
-        {/* Chemical Liquid — Vibrant glowing emerald-cyan potion */}
+        {/* Chemical Liquid / Potion */}
         <path
-          d="M14.5 28C17 26.5 20.5 28.5 24 27.5C27.5 26.5 31 28.5 33.5 28L35.2 34.5C36.1 36.8 34.4 39.5 31.9 39.5H16.1C13.6 39.5 11.9 36.8 12.8 34.5L14.5 28Z"
-          fill="url(#chemPotion)"
+          d="M13.8 28.5C16.8 26.8 20.4 29 24 28C27.6 27 31.2 29.2 34.2 28.5L35.8 35.2C36.7 37.3 35.1 40 32.8 40H15.2C12.9 40 11.3 37.3 12.2 35.2L13.8 28.5Z"
+          fill="url(#flaskLiquidGrad)"
         />
 
-        {/* Liquid Surface Meniscus — Bright crisp wave */}
+        {/* Liquid Surface Meniscus Wave */}
         <path
-          d="M14.2 28C17.2 26.3 20.8 28.8 24 27.5C27.2 26.2 30.8 28.8 33.8 28"
+          d="M13.5 28.5C16.8 26.8 20.4 29.2 24 28C27.6 26.8 31.2 29.2 34.5 28.5"
           stroke="#ffffff"
           strokeWidth="2.2"
           strokeLinecap="round"
         />
 
-        {/* Rising Laboratory Bubbles with bright reflections */}
-        <circle cx="18" cy="33.5" r="2.2" fill="#ffffff">
-          <animate attributeName="cy" values="36;29;36" dur="2.2s" repeatCount="indefinite" />
-          <animate attributeName="opacity" values="0.4;1;0.4" dur="2.2s" repeatCount="indefinite" />
-        </circle>
-        <circle cx="28.5" cy="32" r="2.6" fill="#ffffff">
-          <animate attributeName="cy" values="36;26;36" dur="1.8s" repeatCount="indefinite" />
-          <animate attributeName="opacity" values="0.5;1;0.5" dur="1.8s" repeatCount="indefinite" />
-        </circle>
-        <circle cx="23" cy="22" r="1.6" fill="#00f5d4">
-          <animate attributeName="cy" values="27;17;27" dur="2.5s" repeatCount="indefinite" />
-        </circle>
-
-        {/* Orbiting Atomic Electron Ring — Tilted, vibrant purple/pink */}
-        <ellipse
-          cx="24"
-          cy="22"
-          rx="15"
-          ry="6.5"
-          stroke="#c084fc"
-          strokeWidth="2.2"
-          fill="none"
-          transform="rotate(-28 24 22)"
-          opacity="0.95"
+        {/* Glass reflection highlight on left shoulder */}
+        <path
+          d="M14.5 34.5L19.5 22.5"
+          stroke="rgba(255, 255, 255, 0.55)"
+          strokeWidth="1.8"
+          strokeLinecap="round"
         />
-        {/* Electron Particles */}
-        <circle cx="36.5" cy="17.5" r="2.4" fill="#00f5d4" filter="url(#intenseNeonGlow)">
-          <animate attributeName="r" values="2;3;2" dur="1.4s" repeatCount="indefinite" />
-        </circle>
-        <circle cx="11.5" cy="26.5" r="2" fill="#facc15">
-          <animate attributeName="r" values="1.6;2.5;1.6" dur="1.7s" repeatCount="indefinite" />
-        </circle>
 
-        {/* Glowing Central Nucleus */}
-        <circle cx="24" cy="22" r="4.5" fill="url(#atomCoreGlow)" />
-        <circle cx="24" cy="22" r="2.5" fill="#ffffff" />
+        {/* Rising Animated Chemical Bubbles */}
+        <circle cx="18" cy="34" r="2.2" fill="#ffffff">
+          <animate attributeName="cy" values="37;29;37" dur="2.1s" repeatCount="indefinite" />
+          <animate attributeName="opacity" values="0.3;0.95;0.3" dur="2.1s" repeatCount="indefinite" />
+        </circle>
+        <circle cx="28.5" cy="33" r="2.6" fill="#ffffff">
+          <animate attributeName="cy" values="37;26;37" dur="1.7s" repeatCount="indefinite" />
+          <animate attributeName="opacity" values="0.4;1;0.4" dur="1.7s" repeatCount="indefinite" />
+        </circle>
+        <circle cx="23.5" cy="23" r="1.7" fill="#00f5d4">
+          <animate attributeName="cy" values="27;14;27" dur="2.4s" repeatCount="indefinite" />
+          <animate attributeName="opacity" values="0.2;0.9;0.2" dur="2.4s" repeatCount="indefinite" />
+        </circle>
+        <circle cx="24" cy="12" r="1.3" fill="#ffffff">
+          <animate attributeName="cy" values="16;7;16" dur="2.8s" repeatCount="indefinite" />
+          <animate attributeName="opacity" values="0.2;0.8;0.2" dur="2.8s" repeatCount="indefinite" />
+        </circle>
       </svg>
     </div>
   );
