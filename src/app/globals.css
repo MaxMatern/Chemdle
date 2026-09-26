@@ -1,83 +1,71 @@
 /* ============================================
-   ELEMLE — Complete Design System
-   Premium dark chemistry laboratory aesthetic
+   CHEMDLE — Chemistry Laboratory Design System
+   High-contrast, luminous science aesthetic
    ============================================ */
 
-/* ——————————————————————————————————
-   @font-face & Imports
-   —————————————————————————————————— */
-
-/* ——————————————————————————————————
-   CSS Variables & Design Tokens
-   —————————————————————————————————— */
-
 :root {
-  /* Core palette — midnight lab theme */
-  --bg-primary: #060b14;
-  --bg-secondary: #0c1220;
-  --bg-tertiary: #111a2e;
-  --bg-elevated: #162032;
-  --bg-card: rgba(22, 32, 50, 0.85);
-  --bg-glass: rgba(12, 18, 32, 0.75);
+  /* Core palette — deep laboratory obsidian */
+  --bg-deep: #050a12;
+  --bg-primary: #07101d;
+  --bg-secondary: #0c182c;
+  --bg-tertiary: #12243d;
+  --bg-elevated: #172d4b;
+  --bg-card: rgba(12, 24, 44, 0.88);
+  --bg-glass: rgba(7, 16, 29, 0.85);
 
   /* Text */
-  --text-primary: #e8edf5;
-  --text-secondary: #8b9dc3;
-  --text-muted: #546a8d;
-  --text-accent: #64d2ff;
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --text-accent: #00f5d4;
   --text-bright: #ffffff;
 
   /* Chemistry accent colors */
-  --accent-cyan: #00d4ff;
-  --accent-purple: #8b5cf6;
-  --accent-indigo: #6366f1;
-  --accent-pink: #ec4899;
-  --accent-teal: #14b8a6;
+  --accent-cyan: #00f5d4;
+  --accent-emerald: #10b981;
+  --accent-amber: #f59e0b;
+  --accent-purple: #a855f7;
+  --accent-blue: #00b4d8;
+  --accent-pink: #f43f5e;
 
   /* Gradients */
-  --gradient-brand: linear-gradient(135deg, #00d4ff 0%, #6366f1 50%, #8b5cf6 100%);
-  --gradient-brand-subtle: linear-gradient(135deg, rgba(0,212,255,0.12) 0%, rgba(99,102,241,0.08) 50%, rgba(139,92,246,0.06) 100%);
-  --gradient-glow: radial-gradient(ellipse at center, rgba(0,212,255,0.15) 0%, transparent 70%);
+  --gradient-brand: linear-gradient(135deg, #00f5d4 0%, #00b4d8 50%, #10b981 100%);
+  --gradient-brand-subtle: linear-gradient(135deg, rgba(0, 245, 212, 0.12) 0%, rgba(0, 180, 216, 0.08) 50%, rgba(16, 185, 129, 0.06) 100%);
+  --gradient-glow: radial-gradient(ellipse at center, rgba(0, 245, 212, 0.18) 0%, transparent 70%);
 
-  /* Feedback Colors — Standard */
-  --color-correct: #22c55e;
-  --color-correct-bg: rgba(34, 197, 94, 0.15);
-  --color-correct-border: rgba(34, 197, 94, 0.4);
-  --color-correct-glow: 0 0 20px rgba(34, 197, 94, 0.25), inset 0 0 20px rgba(34, 197, 94, 0.08);
+  /* Feedback Colors — Standard (Luminous Laboratory Reagents) */
+  --color-correct: #10b981;
+  --color-correct-border: #34d399;
+  --color-correct-glow: 0 0 20px rgba(16, 185, 129, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.4);
 
-  --color-partial: #eab308;
-  --color-partial-bg: rgba(234, 179, 8, 0.15);
-  --color-partial-border: rgba(234, 179, 8, 0.4);
-  --color-partial-glow: 0 0 20px rgba(234, 179, 8, 0.2), inset 0 0 20px rgba(234, 179, 8, 0.06);
+  --color-partial: #f59e0b;
+  --color-partial-border: #fbbf24;
+  --color-partial-glow: 0 0 20px rgba(245, 158, 11, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.4);
 
-  --color-incorrect: #ef4444;
-  --color-incorrect-bg: rgba(239, 68, 68, 0.12);
-  --color-incorrect-border: rgba(239, 68, 68, 0.35);
-  --color-incorrect-glow: 0 0 16px rgba(239, 68, 68, 0.15), inset 0 0 16px rgba(239, 68, 68, 0.05);
+  --color-incorrect: #1e293b;
+  --color-incorrect-border: rgba(255, 255, 255, 0.12);
+  --color-incorrect-glow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
 
-  --color-neutral: rgba(30, 45, 72, 0.6);
-  --color-neutral-border: rgba(100, 130, 180, 0.12);
+  --color-neutral: #111e31;
+  --color-neutral-border: rgba(0, 245, 212, 0.16);
 
   /* Feedback Colors — Colorblind */
   --cb-correct: #0ea5e9;
-  --cb-correct-bg: rgba(14, 165, 233, 0.15);
-  --cb-correct-border: rgba(14, 165, 233, 0.4);
-  --cb-correct-glow: 0 0 20px rgba(14, 165, 233, 0.25), inset 0 0 20px rgba(14, 165, 233, 0.08);
+  --cb-correct-border: #38bdf8;
+  --cb-correct-glow: 0 0 20px rgba(14, 165, 233, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.4);
 
-  --cb-partial: #f59e0b;
-  --cb-partial-bg: rgba(245, 158, 11, 0.15);
-  --cb-partial-border: rgba(245, 158, 11, 0.4);
-  --cb-partial-glow: 0 0 20px rgba(245, 158, 11, 0.2), inset 0 0 20px rgba(245, 158, 11, 0.06);
+  --cb-partial: #ea580c;
+  --cb-partial-border: #fb923c;
+  --cb-partial-glow: 0 0 20px rgba(234, 88, 12, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.4);
 
-  --cb-incorrect: #a855f7;
-  --cb-incorrect-bg: rgba(168, 85, 247, 0.12);
-  --cb-incorrect-border: rgba(168, 85, 247, 0.35);
-  --cb-incorrect-glow: 0 0 16px rgba(168, 85, 247, 0.15), inset 0 0 16px rgba(168, 85, 247, 0.05);
+  --cb-incorrect: #1e293b;
+  --cb-incorrect-border: rgba(255, 255, 255, 0.12);
+  --cb-incorrect-glow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
 
   /* Border */
-  --border-subtle: rgba(100, 130, 180, 0.08);
-  --border-medium: rgba(100, 130, 180, 0.15);
-  --border-glow: rgba(0, 212, 255, 0.2);
+  --border-subtle: rgba(148, 163, 184, 0.1);
+  --border-medium: rgba(148, 163, 184, 0.2);
+  --border-glow: rgba(0, 245, 212, 0.25);
 
   /* Typography */
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
@@ -119,10 +107,11 @@ html {
 
 body {
   font-family: var(--font-sans);
-  background: var(--bg-primary);
+  background: var(--bg-deep);
   color: var(--text-primary);
   min-height: 100vh;
-  overflow-x: hidden;
+  overflow-x: hidden !important;
+  width: 100%;
   position: relative;
 }
 
@@ -134,29 +123,32 @@ body::before {
   pointer-events: none;
   z-index: 0;
   background:
-    radial-gradient(ellipse 800px 600px at 15% 20%, rgba(0, 212, 255, 0.05) 0%, transparent 70%),
-    radial-gradient(ellipse 600px 800px at 85% 60%, rgba(139, 92, 246, 0.04) 0%, transparent 70%),
-    radial-gradient(ellipse 900px 400px at 50% 90%, rgba(99, 102, 241, 0.03) 0%, transparent 60%),
-    radial-gradient(ellipse 400px 400px at 70% 10%, rgba(236, 72, 153, 0.025) 0%, transparent 60%);
-  animation: ambientShift 20s ease-in-out infinite alternate;
+    radial-gradient(ellipse 900px 700px at 10% 15%, rgba(0, 245, 212, 0.07) 0%, transparent 70%),
+    radial-gradient(ellipse 700px 800px at 90% 65%, rgba(16, 185, 129, 0.06) 0%, transparent 70%),
+    radial-gradient(ellipse 800px 500px at 50% 95%, rgba(168, 85, 247, 0.05) 0%, transparent 60%),
+    radial-gradient(ellipse 500px 500px at 75% 15%, rgba(0, 180, 216, 0.05) 0%, transparent 60%);
+  animation: ambientShift 18s ease-in-out infinite alternate;
 }
 
 @keyframes ambientShift {
-  0% { opacity: 1; }
-  50% { opacity: 0.7; }
-  100% { opacity: 1; }
+  0% { opacity: 0.85; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.02); }
+  100% { opacity: 0.85; transform: scale(1); }
 }
 
-/* Dot grid subtle pattern */
+/* Chemical grid & laboratory particle pattern */
 body::after {
   content: '';
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: 0;
-  opacity: 0.03;
-  background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.5) 1px, transparent 0);
-  background-size: 40px 40px;
+  opacity: 0.04;
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(0, 245, 212, 0.8) 1px, transparent 0),
+    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 36px 36px, 72px 72px, 72px 72px;
 }
 
 /* ——————————————————————————————————
@@ -177,7 +169,7 @@ body::after {
 .loading-atom {
   font-size: 56px;
   animation: atomPulse 2s ease-in-out infinite;
-  filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.3));
+  filter: drop-shadow(0 0 20px rgba(0, 245, 212, 0.4));
 }
 
 .loading-screen p {
@@ -190,14 +182,15 @@ body::after {
 
 @keyframes atomPulse {
   0%, 100% { transform: scale(1) rotate(0deg); opacity: 1; }
-  50% { transform: scale(1.1) rotate(10deg); opacity: 0.8; }
+  50% { transform: scale(1.1) rotate(10deg); opacity: 0.85; }
 }
 
 /* ——————————————————————————————————
-   Game Container
+   Game Container — Guaranteed Zero Horizontal Overflow
    —————————————————————————————————— */
 
 .game-container {
+  width: 100%;
   max-width: 1100px;
   margin: 0 auto;
   min-height: 100vh;
@@ -205,14 +198,18 @@ body::after {
   flex-direction: column;
   position: relative;
   z-index: 1;
+  overflow-x: hidden;
 }
 
 .game-main {
   flex: 1;
-  padding: 24px 20px 48px;
+  width: 100%;
+  max-width: 100%;
+  padding: 20px clamp(8px, 2vw, 20px) 48px;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 20px;
+  overflow-x: hidden;
 }
 
 /* ——————————————————————————————————
@@ -220,13 +217,14 @@ body::after {
    —————————————————————————————————— */
 
 .navbar {
-  background: rgba(6, 11, 20, 0.96);
+  background: rgba(5, 10, 18, 0.97);
   backdrop-filter: blur(24px) saturate(180%);
   -webkit-backdrop-filter: blur(24px) saturate(180%);
   border-bottom: 1px solid var(--border-subtle);
   position: sticky;
   top: 0;
   z-index: 50;
+  width: 100%;
 }
 
 .navbar::after {
@@ -235,61 +233,93 @@ body::after {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent 0%, rgba(0,212,255,0.3) 30%, rgba(139,92,246,0.3) 70%, transparent 100%);
+  height: 1.5px;
+  background: linear-gradient(90deg, transparent 0%, rgba(0, 245, 212, 0.4) 30%, rgba(16, 185, 129, 0.4) 70%, transparent 100%);
 }
 
 .navbar-inner {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 14px 20px;
+  padding: 12px clamp(8px, 2vw, 20px);
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
 }
 
 .navbar-left {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
 }
 
-.navbar-icon {
-  color: var(--accent-cyan);
-  filter: drop-shadow(0 0 8px rgba(0, 212, 255, 0.4));
-  animation: iconSpin 12s linear infinite;
+/* Chemistry Flask Brand Emblem — High Contrast & High Visibility */
+.navbar-logo-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: radial-gradient(circle at 50% 35%, rgba(0, 245, 212, 0.28) 0%, rgba(16, 185, 129, 0.2) 60%, rgba(7, 16, 29, 0.95) 100%);
+  border: 2px solid #00f5d4;
+  box-shadow: 0 0 22px rgba(0, 245, 212, 0.5), inset 0 1px 2px rgba(255, 255, 255, 0.6);
+  flex-shrink: 0;
+  transition: transform 0.3s var(--ease-spring), box-shadow 0.3s ease;
+  position: relative;
 }
 
-@keyframes iconSpin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+.navbar-logo-badge:hover {
+  transform: scale(1.1) rotate(-3deg);
+  box-shadow: 0 0 32px rgba(0, 245, 212, 0.75), inset 0 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+.navbar-flask-svg {
+  filter: drop-shadow(0 0 10px rgba(0, 245, 212, 0.75));
 }
 
 .navbar-title-group {
   display: flex;
   flex-direction: column;
-  gap: 1px;
+  gap: 2px;
 }
 
 .navbar-title {
-  font-size: 1.5rem;
+  font-size: 1.55rem;
   font-weight: 900;
-  letter-spacing: 4px;
-  background: var(--gradient-brand);
+  letter-spacing: 2.5px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+}
+
+.brand-chem {
+  background: linear-gradient(135deg, #ffffff 0%, #00f5d4 50%, #00d4ff 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  background-clip: text;
-  line-height: 1.1;
-  filter: drop-shadow(0 0 12px rgba(0, 212, 255, 0.15));
+  filter: drop-shadow(0 0 12px rgba(0, 245, 212, 0.5));
+}
+
+.brand-dle {
+  background: linear-gradient(135deg, #10b981 0%, #34d399 50%, #6ee7b7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 12px rgba(16, 185, 129, 0.5));
 }
 
 .navbar-subtitle {
-  font-size: 0.65rem;
-  font-weight: 600;
-  color: var(--text-muted);
-  letter-spacing: 2px;
+  font-size: 0.64rem;
+  font-weight: 800;
+  color: var(--accent-cyan);
+  background: rgba(0, 245, 212, 0.1);
+  border: 1px solid rgba(0, 245, 212, 0.3);
+  padding: 1px 7px;
+  border-radius: var(--radius-pill);
+  letter-spacing: 1.4px;
   text-transform: uppercase;
   font-family: var(--font-mono);
+  width: fit-content;
+  margin-top: 1px;
 }
 
 .navbar-right {
@@ -530,57 +560,63 @@ body::after {
 }
 
 .guess-grid-wrapper {
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  padding-bottom: 8px;
-  scrollbar-width: thin;
-  scrollbar-color: var(--bg-tertiary) transparent;
+  width: 100%;
+  max-width: 100%;
+  overflow: visible;
+  padding-bottom: 2px;
 }
 
 .guess-grid {
-  min-width: 880px;
+  width: 100%;
+  min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: clamp(4px, 0.8vw, 8px);
 }
 
 /* ——————————————————————
-   Grid Header
+   Grid Header — Fluid & Compact
    —————————————————————— */
 
 .guess-header {
   display: grid;
-  grid-template-columns: 1.5fr 1.2fr 1.3fr 0.65fr 0.65fr 0.95fr 0.95fr 0.95fr;
-  gap: 8px;
-  padding: 0 2px 4px;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.25fr) minmax(0, 1.15fr) minmax(0, 0.6fr) minmax(0, 0.75fr) minmax(0, 0.95fr) minmax(0, 0.95fr) minmax(0, 0.95fr);
+  gap: clamp(3px, 0.6vw, 7px);
+  padding: 0 1px 4px;
   border-bottom: 1px solid var(--border-subtle);
   margin-bottom: 2px;
+  width: 100%;
 }
 
 .header-cell {
-  font-size: 0.62rem;
-  font-weight: 700;
+  font-size: clamp(0.5rem, 0.85vw, 0.65rem);
+  font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 1.2px;
-  color: var(--text-muted);
+  letter-spacing: 0.6px;
+  color: var(--text-secondary);
   text-align: center;
-  padding: 8px 4px;
+  padding: 6px 1px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 4px;
+  gap: 3px;
   position: relative;
+  min-width: 0;
+  overflow: hidden;
+  white-space: normal;
+  line-height: 1.15;
 }
 
 /* ——————————————————————
-   Guess Row
+   Guess Row — Fluid 8-Column Layout
    —————————————————————— */
 
 .guess-row {
   display: grid;
-  grid-template-columns: 1.5fr 1.2fr 1.3fr 0.65fr 0.65fr 0.95fr 0.95fr 0.95fr;
-  gap: 8px;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.25fr) minmax(0, 1.15fr) minmax(0, 0.6fr) minmax(0, 0.75fr) minmax(0, 0.95fr) minmax(0, 0.95fr) minmax(0, 0.95fr);
+  gap: clamp(3px, 0.6vw, 7px);
   animation: rowSlideIn 0.3s var(--ease-out);
+  width: 100%;
 }
 
 @keyframes rowSlideIn {
@@ -605,12 +641,14 @@ body::after {
 }
 
 /* ——————————————————————————————————
-   Tile — 3D Flip + Glow Effect
+   Tile — 3D Flip + Vibrant Chemistry Laboratory Aesthetic
    —————————————————————————————————— */
 
 .tile-wrapper {
   perspective: 800px;
-  height: 64px;
+  height: clamp(52px, 6.8vw, 66px);
+  min-width: 0;
+  width: 100%;
 }
 
 .tile-inner {
@@ -635,60 +673,68 @@ body::after {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 6px 8px;
+  padding: clamp(3px, 0.5vw, 6px) clamp(2px, 0.4vw, 5px);
+  overflow: hidden;
+  min-width: 0;
 }
 
 .tile-front {
   background: var(--color-neutral);
   border: 1px solid var(--color-neutral-border);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
 .tile-back {
   transform: rotateX(180deg);
   border: 1px solid transparent;
-  backdrop-filter: blur(4px);
+  backdrop-filter: blur(6px);
 }
 
 .tile-value {
-  font-size: 0.76rem;
-  font-weight: 650;
+  font-size: clamp(0.62rem, 0.95vw, 0.8rem);
+  font-weight: 750;
   text-align: center;
   display: flex;
   align-items: center;
-  gap: 5px;
-  line-height: 1.25;
+  justify-content: center;
+  gap: 2.5px;
+  line-height: 1.15;
   word-break: break-word;
+  hyphens: auto;
   color: var(--text-bright);
-  text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+  max-width: 100%;
 }
 
 .tile-label {
-  font-size: 0.55rem;
-  opacity: 0.6;
-  margin-top: 2px;
-  font-weight: 500;
+  font-size: clamp(0.48rem, 0.65vw, 0.55rem);
+  opacity: 0.75;
+  margin-top: 1px;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.4px;
 }
 
 .tile-atomic-badge {
   position: absolute;
-  top: 4px;
-  left: 6px;
-  font-size: 0.55rem;
-  font-weight: 700;
+  top: 3px;
+  left: 4px;
+  font-size: clamp(0.48rem, 0.65vw, 0.56rem);
+  font-weight: 800;
   font-family: var(--font-mono);
-  opacity: 0.55;
+  opacity: 0.8;
   color: var(--text-bright);
+  line-height: 1;
 }
 
 .tile-arrow {
   flex-shrink: 0;
-  filter: drop-shadow(0 0 3px currentColor);
-  opacity: 0.9;
+  filter: drop-shadow(0 0 4px currentColor);
+  opacity: 0.95;
+  stroke-width: 2.8;
 }
 
-/* Element tile — periodic table card style */
+/* Element tile — laboratory badge style */
 .tile-element-content {
   display: flex;
   flex-direction: column;
@@ -697,85 +743,94 @@ body::after {
   width: 100%;
   height: 100%;
   position: relative;
-  padding: 2px;
+  padding: 1px;
+  min-width: 0;
 }
 
 .tile-element-symbol {
   font-family: var(--font-mono);
-  font-size: 1.2rem;
-  font-weight: 800;
+  font-size: clamp(0.95rem, 1.6vw, 1.25rem);
+  font-weight: 900;
   color: var(--text-bright);
   line-height: 1;
-  text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+  text-shadow: 0 2px 6px rgba(0,0,0,0.5);
   letter-spacing: -0.5px;
 }
 
 .tile-element-name {
-  font-size: 0.58rem;
-  font-weight: 600;
+  font-size: clamp(0.48rem, 0.7vw, 0.6rem);
+  font-weight: 700;
   color: var(--text-bright);
-  opacity: 0.8;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  opacity: 0.9;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.4);
   margin-top: 1px;
   max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  letter-spacing: -0.2px;
 }
 
 /* Header icon */
 .header-icon {
-  font-size: 0.7rem;
-  opacity: 0.7;
+  font-size: 0.72rem;
+  opacity: 0.85;
 }
 
 /* ——————————————————————
-   Tile Feedback States — Standard
+   Tile Feedback States — Standard Chemistry Theme
+   Glowing, tactile, and immediately rewarding!
    —————————————————————— */
 
 .tile-correct {
-  background: linear-gradient(145deg, rgba(34, 197, 94, 0.85), rgba(22, 163, 74, 0.75));
-  border-color: var(--color-correct-border);
-  box-shadow: var(--color-correct-glow);
+  background: linear-gradient(135deg, #059669 0%, #10b981 50%, #34d399 100%);
+  border-color: #6ee7b7;
+  box-shadow: 0 0 16px rgba(16, 185, 129, 0.45), inset 0 1px 1px rgba(255, 255, 255, 0.4);
+  color: #ffffff;
 }
 
 .tile-partial {
-  background: linear-gradient(145deg, rgba(234, 179, 8, 0.8), rgba(202, 138, 4, 0.7));
-  border-color: var(--color-partial-border);
-  box-shadow: var(--color-partial-glow);
+  background: linear-gradient(135deg, #b45309 0%, #d97706 50%, #f59e0b 100%);
+  border-color: #fde68a;
+  box-shadow: 0 0 16px rgba(245, 158, 11, 0.45), inset 0 1px 1px rgba(255, 255, 255, 0.4);
+  color: #ffffff;
 }
 
 .tile-incorrect {
-  background: linear-gradient(145deg, rgba(239, 68, 68, 0.7), rgba(185, 28, 28, 0.6));
-  border-color: var(--color-incorrect-border);
-  box-shadow: var(--color-incorrect-glow);
+  background: linear-gradient(135deg, #182234 0%, #111a28 100%);
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  color: #94a3b8;
 }
 
 .tile-neutral {
-  background: var(--color-neutral);
-  border-color: var(--color-neutral-border);
+  background: linear-gradient(135deg, #132238 0%, #0d1726 100%);
+  border-color: rgba(0, 245, 212, 0.16);
 }
 
 /* ——————————————————————
-   Tile Feedback States — Colorblind
+   Tile Feedback States — Colorblind Mode
    —————————————————————— */
 
 .tile-correct-cb {
-  background: linear-gradient(145deg, rgba(14, 165, 233, 0.85), rgba(2, 132, 199, 0.75));
-  border-color: var(--cb-correct-border);
-  box-shadow: var(--cb-correct-glow);
+  background: linear-gradient(135deg, #0284c7 0%, #0ea5e9 50%, #38bdf8 100%);
+  border-color: #7dd3fc;
+  box-shadow: 0 0 16px rgba(14, 165, 233, 0.45), inset 0 1px 1px rgba(255, 255, 255, 0.4);
+  color: #ffffff;
 }
 
 .tile-partial-cb {
-  background: linear-gradient(145deg, rgba(245, 158, 11, 0.8), rgba(217, 119, 6, 0.7));
-  border-color: var(--cb-partial-border);
-  box-shadow: var(--cb-partial-glow);
+  background: linear-gradient(135deg, #c2410c 0%, #ea580c 50%, #f97316 100%);
+  border-color: #fed7aa;
+  box-shadow: 0 0 16px rgba(234, 88, 12, 0.45), inset 0 1px 1px rgba(255, 255, 255, 0.4);
+  color: #ffffff;
 }
 
 .tile-incorrect-cb {
-  background: linear-gradient(145deg, rgba(168, 85, 247, 0.7), rgba(124, 58, 237, 0.6));
-  border-color: var(--cb-incorrect-border);
-  box-shadow: var(--cb-incorrect-glow);
+  background: linear-gradient(135deg, #182234 0%, #111a28 100%);
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  color: #94a3b8;
 }
 
 /* ——————————————————————————————————
@@ -1566,21 +1621,22 @@ body::after {
   }
 
   .guess-grid-wrapper {
-    margin: 0 -12px;
-    padding: 0 12px 8px;
+    width: 100%;
+    padding: 0 0 4px;
+    overflow: visible;
   }
 
   .tile-wrapper {
-    height: 56px;
+    height: clamp(48px, 6.5vw, 56px);
   }
 
   .tile-value {
-    font-size: 0.68rem;
+    font-size: clamp(0.55rem, 0.9vw, 0.72rem);
   }
 
   .header-cell {
-    font-size: 0.55rem;
-    letter-spacing: 0.8px;
+    font-size: clamp(0.46rem, 0.8vw, 0.58rem);
+    letter-spacing: 0.3px;
   }
 
   .modal-content {
@@ -1600,11 +1656,12 @@ body::after {
 
 @media (max-width: 480px) {
   .game-main {
-    padding: 10px 6px 28px;
+    padding: 10px 4px 28px;
   }
 
   .guess-grid {
-    min-width: 760px;
+    width: 100%;
+    min-width: 0;
   }
 
   .search-input-wrapper {
@@ -2081,21 +2138,23 @@ button:focus:not(:focus-visible) {
   opacity: 0.8;
 }
 
-/* Scroll wrapper for 18-col grid */
+/* Scroll wrapper for 18-col grid — Strictly fluid with ZERO horizontal scroll */
 .pt-scroll-wrapper {
   width: 100%;
-  overflow-x: auto;
-  padding-bottom: 4px;
+  max-width: 100%;
+  overflow: visible;
+  padding-bottom: 2px;
 }
 
-/* Unified 18-Column Grid */
+/* Unified 18-Column Grid — Fluid scaling across all screen sizes */
 .pt-unified-grid {
   display: grid;
   grid-template-columns: repeat(18, minmax(0, 1fr));
-  grid-template-rows: repeat(7, 34px) 6px repeat(2, 34px);
-  gap: 2.5px;
+  grid-template-rows: repeat(7, clamp(18px, 2.8vw, 34px)) clamp(2px, 0.4vw, 5px) repeat(2, clamp(18px, 2.8vw, 34px));
+  gap: clamp(1px, 0.22vw, 2.5px);
   width: 100%;
-  min-width: 680px;
+  min-width: 0;
+  max-width: 100%;
 }
 
 /* Periodic table individual cell */
@@ -2105,16 +2164,17 @@ button:focus:not(:focus-visible) {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: rgba(15, 23, 42, 0.65);
+  background: rgba(14, 22, 38, 0.85);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 3px;
-  padding: 1px;
+  border-radius: clamp(2px, 0.35vw, 4px);
+  padding: 0;
   cursor: pointer;
   transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
   color: var(--text-primary);
   user-select: none;
   overflow: hidden;
   height: 100%;
+  min-width: 0;
 }
 
 .pt-cell::before {
@@ -2123,67 +2183,69 @@ button:focus:not(:focus-visible) {
   top: 0;
   left: 0;
   right: 0;
-  height: 2px;
+  height: clamp(1.5px, 0.3vw, 2.5px);
   background: var(--cat-color, #6366f1);
-  opacity: 0.75;
+  opacity: 0.85;
 }
 
 .pt-cell-num {
   position: absolute;
-  top: 1.5px;
-  left: 2.5px;
+  top: 1px;
+  left: 2px;
   font-family: var(--font-mono);
-  font-size: 0.52rem;
+  font-size: clamp(0.32rem, 0.65vw, 0.52rem);
   color: var(--text-muted);
   line-height: 1;
+  pointer-events: none;
 }
 
 .pt-cell-symbol {
   font-family: var(--font-mono);
-  font-size: 0.86rem;
+  font-size: clamp(0.56rem, 1.15vw, 0.88rem);
   font-weight: 800;
   color: var(--text-bright);
   line-height: 1;
   letter-spacing: -0.3px;
-  margin-top: 4px;
+  margin-top: clamp(1px, 0.4vw, 4px);
+  pointer-events: none;
 }
 
-/* Candidate cell (fits all clues) */
+/* Candidate cell (fits all clues) — Glowing vibrant bio-emerald */
 .pt-cell-fits {
-  background: rgba(16, 185, 129, 0.09);
-  border-color: rgba(16, 185, 129, 0.4);
-  box-shadow: 0 0 6px rgba(16, 185, 129, 0.15);
+  background: rgba(16, 185, 129, 0.16);
+  border-color: rgba(52, 211, 153, 0.65);
+  box-shadow: 0 0 8px rgba(16, 185, 129, 0.3);
 }
 
 .pt-cell-fits:hover {
-  transform: translateY(-1.5px) scale(1.08);
+  transform: translateY(-1.5px) scale(1.1);
   border-color: #34d399;
-  box-shadow: 0 0 12px rgba(16, 185, 129, 0.45);
+  box-shadow: 0 0 16px rgba(16, 185, 129, 0.65);
   z-index: 10;
 }
 
 .pt-fit-dot {
   position: absolute;
-  top: 2.5px;
-  right: 2.5px;
-  width: 4px;
-  height: 4px;
+  top: 2px;
+  right: 2px;
+  width: clamp(2.5px, 0.45vw, 4.5px);
+  height: clamp(2.5px, 0.45vw, 4.5px);
   border-radius: 50%;
   background: #34d399;
-  box-shadow: 0 0 4px #34d399;
+  box-shadow: 0 0 5px #34d399;
 }
 
 /* Eliminated cell (does not fit) */
 .pt-cell-eliminated {
-  opacity: 0.22;
-  filter: grayscale(90%);
-  background: rgba(10, 15, 26, 0.4);
-  border-color: rgba(255, 255, 255, 0.03);
+  opacity: 0.24;
+  filter: grayscale(85%);
+  background: rgba(8, 12, 22, 0.6);
+  border-color: rgba(255, 255, 255, 0.04);
 }
 
 .pt-cell-eliminated:hover {
-  opacity: 0.75;
-  filter: grayscale(20%);
+  opacity: 0.8;
+  filter: grayscale(10%);
   transform: translateY(-1px);
   z-index: 10;
 }
@@ -2195,13 +2257,14 @@ button:focus:not(:focus-visible) {
 /* Guessed cell */
 .pt-cell-guessed {
   border-color: var(--accent-cyan);
+  box-shadow: 0 0 6px rgba(0, 245, 212, 0.3);
 }
 
 .pt-guessed-check {
   position: absolute;
   top: 1px;
   right: 2px;
-  font-size: 0.52rem;
+  font-size: clamp(0.38rem, 0.65vw, 0.54rem);
   font-weight: 800;
   color: var(--accent-cyan);
   line-height: 1;
@@ -2212,7 +2275,8 @@ button:focus:not(:focus-visible) {
   outline: 2px solid var(--accent-cyan);
   outline-offset: 1px;
   z-index: 15;
-  transform: scale(1.08);
+  transform: scale(1.1);
+  box-shadow: 0 0 14px rgba(0, 245, 212, 0.6);
 }
 
 /* Placeholder for Lanthanides/Actinides in main table */
@@ -2224,14 +2288,14 @@ button:focus:not(:focus-visible) {
 
 .pt-placeholder-label {
   font-family: var(--font-mono);
-  font-size: 0.65rem;
+  font-size: clamp(0.38rem, 0.65vw, 0.62rem);
   font-weight: 700;
   color: var(--text-muted);
   line-height: 1;
 }
 
 .pt-placeholder-sub {
-  font-size: 0.42rem;
+  font-size: clamp(0.28rem, 0.45vw, 0.42rem);
   color: var(--text-muted);
   line-height: 1;
   margin-top: 1px;
@@ -2239,7 +2303,7 @@ button:focus:not(:focus-visible) {
 
 /* Row 8 gap spacer */
 .pt-grid-spacer {
-  height: 6px;
+  height: clamp(2px, 0.4vw, 5px);
 }
 
 /* Rows 9 & 10 f-block labels */
@@ -2247,12 +2311,15 @@ button:focus:not(:focus-visible) {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  padding-right: 8px;
-  font-size: 0.64rem;
-  font-weight: 700;
+  padding-right: clamp(2px, 0.5vw, 8px);
+  font-size: clamp(0.4rem, 0.7vw, 0.64rem);
+  font-weight: 800;
   color: var(--text-muted);
   letter-spacing: 0.3px;
   text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* Category Legend */
@@ -2293,4 +2360,33 @@ button:focus:not(:focus-visible) {
   background: #64748b;
   opacity: 0.35;
 }
+
+@media (max-width: 640px) {
+  .periodic-table-card {
+    padding: 10px 8px;
+  }
+
+  .pt-cell-num {
+    display: none; /* Hide atomic number on small mobile screens to keep the chemical symbol prominent and uncluttered */
+  }
+
+  .pt-cell-symbol {
+    margin-top: 0;
+    font-size: clamp(0.55rem, 2.1vw, 0.76rem);
+  }
+
+  .pt-placeholder-sub {
+    display: none;
+  }
+
+  .pt-placeholder-label {
+    font-size: 0.44rem;
+  }
+
+  .pt-fblock-label-cell {
+    font-size: 0.44rem;
+    padding-right: 2px;
+  }
+}
+
 

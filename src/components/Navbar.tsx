@@ -15,73 +15,110 @@ interface NavbarProps {
   onOpenSettings: () => void;
 }
 
-function AtomIcon() {
+function ChemdleLogo() {
   return (
-    <svg
-      width="32"
-      height="32"
-      viewBox="0 0 32 32"
-      fill="none"
-      className="navbar-atom-svg"
-      aria-hidden="true"
-    >
-      {/* Nucleus */}
-      <circle cx="16" cy="16" r="3.5" fill="url(#nucleusGrad)" />
-      <circle cx="16" cy="16" r="3.5" fill="url(#nucleusGrad)" opacity="0.5">
-        <animate attributeName="r" values="3.5;4;3.5" dur="2s" repeatCount="indefinite" />
-      </circle>
-      {/* Orbital rings */}
-      <ellipse cx="16" cy="16" rx="13" ry="5" stroke="url(#orbitGrad1)" strokeWidth="0.8" opacity="0.6">
-        <animateTransform attributeName="transform" type="rotate" values="0 16 16;360 16 16" dur="8s" repeatCount="indefinite" />
-      </ellipse>
-      <ellipse cx="16" cy="16" rx="13" ry="5" stroke="url(#orbitGrad2)" strokeWidth="0.8" opacity="0.5">
-        <animateTransform attributeName="transform" type="rotate" values="60 16 16;420 16 16" dur="10s" repeatCount="indefinite" />
-      </ellipse>
-      <ellipse cx="16" cy="16" rx="13" ry="5" stroke="url(#orbitGrad3)" strokeWidth="0.8" opacity="0.4">
-        <animateTransform attributeName="transform" type="rotate" values="120 16 16;480 16 16" dur="12s" repeatCount="indefinite" />
-      </ellipse>
-      {/* Electrons */}
-      <circle r="1.5" fill="#00d4ff" opacity="0.9">
-        <animateMotion dur="8s" repeatCount="indefinite">
-          <mpath href="#orbit1" />
-        </animateMotion>
-      </circle>
-      <circle r="1.3" fill="#8b5cf6" opacity="0.8">
-        <animateMotion dur="10s" repeatCount="indefinite">
-          <mpath href="#orbit2" />
-        </animateMotion>
-      </circle>
-      <circle r="1.2" fill="#ec4899" opacity="0.7">
-        <animateMotion dur="12s" repeatCount="indefinite">
-          <mpath href="#orbit3" />
-        </animateMotion>
-      </circle>
-      {/* Hidden paths for animateMotion */}
-      <defs>
-        <ellipse id="orbit1" cx="16" cy="16" rx="13" ry="5" />
-        <ellipse id="orbit2" cx="16" cy="16" rx="11" ry="7" transform="rotate(60 16 16)" />
-        <ellipse id="orbit3" cx="16" cy="16" rx="12" ry="4" transform="rotate(120 16 16)" />
-        <radialGradient id="nucleusGrad">
-          <stop offset="0%" stopColor="#00d4ff" />
-          <stop offset="100%" stopColor="#6366f1" />
-        </radialGradient>
-        <linearGradient id="orbitGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="#00d4ff" stopOpacity="0" />
-          <stop offset="50%" stopColor="#00d4ff" />
-          <stop offset="100%" stopColor="#00d4ff" stopOpacity="0" />
-        </linearGradient>
-        <linearGradient id="orbitGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="#8b5cf6" stopOpacity="0" />
-          <stop offset="50%" stopColor="#8b5cf6" />
-          <stop offset="100%" stopColor="#8b5cf6" stopOpacity="0" />
-        </linearGradient>
-        <linearGradient id="orbitGrad3" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="#ec4899" stopOpacity="0" />
-          <stop offset="50%" stopColor="#ec4899" />
-          <stop offset="100%" stopColor="#ec4899" stopOpacity="0" />
-        </linearGradient>
-      </defs>
-    </svg>
+    <div className="navbar-logo-badge" title="Chemdle">
+      <svg
+        width="40"
+        height="40"
+        viewBox="0 0 48 48"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="navbar-flask-svg"
+        aria-hidden="true"
+      >
+        <defs>
+          {/* Intense vibrant chemistry gradients */}
+          <linearGradient id="chemFlaskGlass" x1="8" y1="4" x2="40" y2="44" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stopColor="#ffffff" />
+            <stop offset="25%" stopColor="#00f5d4" />
+            <stop offset="100%" stopColor="#00b4d8" />
+          </linearGradient>
+          <linearGradient id="chemPotion" x1="12" y1="20" x2="36" y2="42" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stopColor="#00f5d4" />
+            <stop offset="50%" stopColor="#10b981" />
+            <stop offset="100%" stopColor="#059669" />
+          </linearGradient>
+          <radialGradient id="atomCoreGlow" cx="24" cy="22" r="9" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stopColor="#ffffff" />
+            <stop offset="40%" stopColor="#00f5d4" />
+            <stop offset="100%" stopColor="#00f5d4" stopOpacity="0" />
+          </radialGradient>
+          <filter id="intenseNeonGlow" x="-30%" y="-30%" width="160%" height="160%">
+            <feGaussianBlur stdDeviation="2" result="blur" />
+            <feMerge>
+              <feMergeNode in="blur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+        </defs>
+
+        {/* Flask Glass Body with vivid, high-contrast outline */}
+        <path
+          d="M20 6V15L11.5 34.5C10.2 37.5 12.4 41 15.6 41H32.4C35.6 41 37.8 37.5 36.5 34.5L28 15V6H20Z"
+          fill="rgba(0, 245, 212, 0.22)"
+          stroke="url(#chemFlaskGlass)"
+          strokeWidth="3.2"
+          strokeLinejoin="round"
+          strokeLinecap="round"
+        />
+
+        {/* Flask Rim / Flange with bright solid highlight */}
+        <rect x="17.5" y="4" width="13" height="3.5" rx="1.75" fill="#ffffff" />
+        <rect x="19" y="5" width="10" height="1.5" rx="0.75" fill="#00f5d4" />
+
+        {/* Chemical Liquid — Vibrant glowing emerald-cyan potion */}
+        <path
+          d="M14.5 28C17 26.5 20.5 28.5 24 27.5C27.5 26.5 31 28.5 33.5 28L35.2 34.5C36.1 36.8 34.4 39.5 31.9 39.5H16.1C13.6 39.5 11.9 36.8 12.8 34.5L14.5 28Z"
+          fill="url(#chemPotion)"
+        />
+
+        {/* Liquid Surface Meniscus — Bright crisp wave */}
+        <path
+          d="M14.2 28C17.2 26.3 20.8 28.8 24 27.5C27.2 26.2 30.8 28.8 33.8 28"
+          stroke="#ffffff"
+          strokeWidth="2.2"
+          strokeLinecap="round"
+        />
+
+        {/* Rising Laboratory Bubbles with bright reflections */}
+        <circle cx="18" cy="33.5" r="2.2" fill="#ffffff">
+          <animate attributeName="cy" values="36;29;36" dur="2.2s" repeatCount="indefinite" />
+          <animate attributeName="opacity" values="0.4;1;0.4" dur="2.2s" repeatCount="indefinite" />
+        </circle>
+        <circle cx="28.5" cy="32" r="2.6" fill="#ffffff">
+          <animate attributeName="cy" values="36;26;36" dur="1.8s" repeatCount="indefinite" />
+          <animate attributeName="opacity" values="0.5;1;0.5" dur="1.8s" repeatCount="indefinite" />
+        </circle>
+        <circle cx="23" cy="22" r="1.6" fill="#00f5d4">
+          <animate attributeName="cy" values="27;17;27" dur="2.5s" repeatCount="indefinite" />
+        </circle>
+
+        {/* Orbiting Atomic Electron Ring — Tilted, vibrant purple/pink */}
+        <ellipse
+          cx="24"
+          cy="22"
+          rx="15"
+          ry="6.5"
+          stroke="#c084fc"
+          strokeWidth="2.2"
+          fill="none"
+          transform="rotate(-28 24 22)"
+          opacity="0.95"
+        />
+        {/* Electron Particles */}
+        <circle cx="36.5" cy="17.5" r="2.4" fill="#00f5d4" filter="url(#intenseNeonGlow)">
+          <animate attributeName="r" values="2;3;2" dur="1.4s" repeatCount="indefinite" />
+        </circle>
+        <circle cx="11.5" cy="26.5" r="2" fill="#facc15">
+          <animate attributeName="r" values="1.6;2.5;1.6" dur="1.7s" repeatCount="indefinite" />
+        </circle>
+
+        {/* Glowing Central Nucleus */}
+        <circle cx="24" cy="22" r="4.5" fill="url(#atomCoreGlow)" />
+        <circle cx="24" cy="22" r="2.5" fill="#ffffff" />
+      </svg>
+    </div>
   );
 }
 
@@ -98,9 +135,11 @@ export default function Navbar({
     <header className="navbar">
       <div className="navbar-inner">
         <div className="navbar-left">
-          <AtomIcon />
+          <ChemdleLogo />
           <div className="navbar-title-group">
-            <h1 className="navbar-title">CHEMDLE</h1>
+            <h1 className="navbar-title">
+              <span className="brand-chem">CHEM</span><span className="brand-dle">DLE</span>
+            </h1>
             <span className="navbar-subtitle">{t('dayPrefix', language)}{dayNumber}</span>
           </div>
         </div>
