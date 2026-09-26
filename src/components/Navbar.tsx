@@ -100,7 +100,7 @@ export default function Navbar({
         <div className="navbar-left">
           <AtomIcon />
           <div className="navbar-title-group">
-            <h1 className="navbar-title">ELEMLE</h1>
+            <h1 className="navbar-title">CHEMDLE</h1>
             <span className="navbar-subtitle">{t('dayPrefix', language)}{dayNumber}</span>
           </div>
         </div>

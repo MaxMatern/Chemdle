@@ -296,6 +296,6 @@ export function generateShareText(
   });
 
   const won = evaluations.some(e => e.isVictory);
-  const header = `⚗️ Elemle #${dayNumber} — ${won ? evaluations.length : 'X'}/∞`;
-  return `${header}\n${lines.join('\n')}\nhttps://elemle.app`;
+  const header = `⚗️ Chemdle #${dayNumber} — ${won ? evaluations.length : 'X'}/∞`;
+  return `${header}\n${lines.join('\n')}\nhttps://chemdle.vercel.app`;
 }

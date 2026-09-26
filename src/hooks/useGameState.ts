@@ -6,7 +6,7 @@ import { elements } from '@/data/elements';
 import { getDailySeed, getDailyElement } from '@/lib/dailyTarget';
 import { evaluateGuess } from '@/lib/comparator';
 
-const STORAGE_KEY = 'elemle_storage_v1';
+const STORAGE_KEY = 'chemdle_storage_v1';
 
 function getDefaultStats(): UserStats {
   return {
@@ -38,7 +38,10 @@ function getDefaultState(dayIndex: number): StoredGameState {
 function loadState(): StoredGameState | null {
   if (typeof window === 'undefined') return null;
   try {
-    const raw = localStorage.getItem(STORAGE_KEY);
+    let raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) {
+      raw = localStorage.getItem('elemle_storage_v1');
+    }
     if (!raw) return null;
     return JSON.parse(raw) as StoredGameState;
   } catch {

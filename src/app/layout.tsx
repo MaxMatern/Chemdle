@@ -2,19 +2,20 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Elemle — Daily Periodic Table Guessing Game',
+  title: 'Chemdle — Daily Periodic Table Guessing Game',
   description:
-    'Elemle is a daily chemical element guessing game inspired by Wordle. Deduce the mystery element using 8 scientific attributes including atomic mass, electronegativity, and melting point.',
+    'Chemdle is a daily chemical element guessing game inspired by Wordle. Deduce the mystery element using 8 scientific attributes including atomic mass, electronegativity, and melting point.',
   keywords: [
     'periodic table game',
     'chemistry game',
+    'chemdle',
     'wordle',
     'element guessing',
     'science game',
     'education',
   ],
   openGraph: {
-    title: 'Elemle — Daily Periodic Table Guessing Game',
+    title: 'Chemdle — Daily Periodic Table Guessing Game',
     description: 'Can you identify today\'s mystery element? Test your chemistry knowledge!',
     type: 'website',
   },
